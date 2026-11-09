@@ -1,0 +1,11 @@
+server {
+    listen {{ lighthouse_port }};
+    server_name _;
+    root {{ lighthouse_root }}/lighthouse-{{ lighthouse_version }};
+    index index.html;
+    location / { try_files $uri $uri/ =404; }
+    location /clickhouse/ {
+        proxy_set_header Host $proxy_host;
+        proxy_pass http://{{ hostvars[groups['clickhouse'][0]].ansible_host }}:8123/;
+    }
+}

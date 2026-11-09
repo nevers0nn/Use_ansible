@@ -1,0 +1,14 @@
+data_dir: /var/lib/vector
+sources:
+  demo:
+    type: demo_logs
+    format: json
+    interval: 10
+sinks:
+  clickhouse:
+    type: clickhouse
+    inputs: [demo]
+    endpoint: http://{{ hostvars[groups['clickhouse'][0]].ansible_host }}:8123
+    database: {{ clickhouse_database }}
+    table: events
+    skip_unknown_fields: true

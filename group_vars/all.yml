@@ -1,0 +1,6 @@
+---
+clickhouse_database: logs
+vector_version: "0.44.0"
+lighthouse_version: master
+lighthouse_root: /var/www/lighthouse
+lighthouse_port: 80

@@ -1,0 +1,5 @@
+<clickhouse><users><default><networks replace="replace">
+<ip>127.0.0.1</ip>
+<ip>{{ hostvars[groups['vector'][0]].ansible_host }}</ip>
+<ip>{{ hostvars[groups['lighthouse'][0]].ansible_host }}</ip>
+</networks></default></users></clickhouse>
